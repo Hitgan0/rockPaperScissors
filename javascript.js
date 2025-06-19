@@ -54,23 +54,17 @@ function playRound(humanChoice, computerChoice) {
     return;
 }
 
-function playGame() {
-    let humanScore = 0;
-    let compScore = 0;
+const rockB = document.querySelector(".rockBtn");
+rockB.addEventListener("click", () => {
+    playRound("rock", getCompChoice());
+});
 
-    for (let i = 0; i < 5; i++) {
-        let humanChoice = getHumanChoice();
-        let compChoice = getCompChoice();
-        ret = playRound(humanChoice, compChoice);
-        if (ret == 1) {
-            humanScore++;
-        } else if (ret == 0) {
-            compScore++;
-        }
-    }
-    console.log(`GAME OVER! Final Score:
-    You won ${humanScore}/5 rounds
-    The computer won ${compScore}/5 rounds`);
-}
+const paperB = document.querySelector(".paperBtn");
+paperB.addEventListener("click", () => {
+    playRound("paper", getCompChoice());
+});
 
-playGame();
+const scissorsB = document.querySelector(".scissorsBtn");
+scissorsB.addEventListener("click", () => {
+    playRound("scissors", getCompChoice());
+});
