@@ -16,50 +16,45 @@ function playRound(humanChoice, computerChoice) {
             winOrLose.textContent = "You lost D:"
             compWon++;
             compScore.textContent = compWon;
-            // console.log("games played: ", gamesPlayed)
-            return 0;
         } else if (computerChoice == "scissors") {
             winOrLose.textContent = "You won :D";
             humanWon++;
             humanScore.textContent = humanWon;
-            return 1;
         } else if (computerChoice == "rock") {
             winOrLose.textContent = "You tied :|";
-            return -1;
         }
     } else if (humanChoice == "paper") {
-
         if (computerChoice == "scissors") {
             winOrLose.textContent = "You lost D:";
             compWon++;
             compScore.textContent = compWon;
-
-            return 0;
         } else if (computerChoice == "rock") {
             winOrLose.textContent = "You won :D";
             humanWon++;
             humanScore.textContent = humanWon;
-            return 1;
         } else if (computerChoice == "paper") {
             winOrLose.textContent = "You tied :|";
-            return -1;
         }
     } else if (humanChoice == "scissors") {
         if (computerChoice == "rock") {
             winOrLose.textContent = "You lost D:";
             compWon++;
             compScore.textContent = compWon;
-            return 0;
         } else if (computerChoice == "paper") {
             winOrLose.textContent = "You won :D";
             humanWon++;
             humanScore.textContent = humanWon;
-            return 1;
         } else if (computerChoice == "scissors") {
             winOrLose.textContent = "You tied :|";
-            return -1;
         }
     }
+
+    if (humanWon >= 5 || compWon >= 5) {
+        const gameOver = document.createElement("div");
+        gameOver.textContent = "<<< GAME OVER - refresh page to play again >>>";
+        document.body.appendChild(gameOver);
+    }
+
     return;
 }
 
@@ -73,7 +68,7 @@ let compWon = 0;
 
 const rockB = document.querySelector(".rockBtn");
 rockB.addEventListener("click", () => {
-    playRound("rock", "paper");
+    playRound("rock", getCompChoice());
     gamesPlayed++;
 });
 
